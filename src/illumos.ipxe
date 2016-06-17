@@ -1,0 +1,26 @@
+#!ipxe
+
+goto ${menu} ||
+
+:illumos_menu
+
+menu Illumos Installers
+
+# Illumos based systems
+item --gap Illumos Based Operating Systems
+item smartos ${space} SmartOS
+item openindiana ${space} OpenIndiana
+
+choose menu || goto illumos_exit
+
+echo ${cls}
+goto ${menu} ||
+
+:change_menu
+chain ${menu}.ipxe || goto error
+goto illumos_menu
+
+:illumos_exit
+clear menu
+exit 0
+

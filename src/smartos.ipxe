@@ -1,0 +1,19 @@
+#!ipxe
+
+# FreeBSD Operating System
+# http://www.freebsd.org
+
+:smartos_menu
+goto boot_smartos
+
+:boot_smartos
+set smartos-build 20121004T212912Z
+imgfree
+kernel http://mods.unff.de/smartos-latest/platform/i86pc/kernel/amd64/unix -B smartos=true
+initrd http://mods.unff.de/smartos-latest/platform/i86pc/amd64/boot_archive
+boot
+exit
+
+:smartos_exit
+clear menu
+exit 0
