@@ -1,0 +1,25 @@
+#!ipxe
+
+# OpenBSD Operating System
+# http://www.openbsd.org
+
+set hipster_version 20160421
+
+:openbsd_menu
+menu OpenBSD
+item hipster Hipster 2016.04
+item dev151a Dev 151a 
+choose ver || goto openbsd_exit
+
+iseq ${ver} hipster && set src http://dlc.openindiana.org/isos/hipster/OI-hipster-text-${hipster_version}.iso ||
+iseq ${ver} dev151a && set src http://dlc.openindiana.org/isos/151a/oi-dev-151a-text-x86.iso ||
+
+:boot_openbsd
+imgfree
+initrd ${src}
+chain ${memdisk} iso raw
+exit
+
+:openbsd_exit
+clear menu
+exit 0
