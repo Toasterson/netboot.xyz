@@ -4,22 +4,23 @@
 # http://www.openbsd.org
 
 set hipster_version 20160421
+set base_url http://mods.unff.de/openindiana_netboot_test
 
-:openbsd_menu
-menu OpenBSD
+:openindiana_menu
+menu OpenIndiana
 item hipster Hipster 2016.04
 item dev151a Dev 151a 
-choose ver || goto openbsd_exit
+choose ver || goto openindiana_exit
 
 iseq ${ver} hipster && set src http://dlc.openindiana.org/isos/hipster/OI-hipster-text-${hipster_version}.iso ||
 iseq ${ver} dev151a && set src http://dlc.openindiana.org/isos/151a/oi-dev-151a-text-x86.iso ||
 
-:boot_openbsd
+:boot_openindiana
 imgfree
-initrd ${src}
-chain ${memdisk} iso raw
-exit
+kernel ${base_url}/platform/i86pc/kernel/amd64/unix -B console=ttya,install_media=${base_url},install_service=oi_x86,install_svc_address=${base_url}
+initrd ${base_url}/platform/i86pc/amd64/boot_archive
+exit 0
 
-:openbsd_exit
+:openindiana_exit
 clear menu
 exit 0
