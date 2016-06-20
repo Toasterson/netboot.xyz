@@ -20,7 +20,7 @@ imgfree
 kernel ${base_url}/platform/i86pc/kernel/amd64/unix -B console=ttya,install_media=${base_url},install_service=oi_x86,install_svc_address=${base_url}
 initrd ${base_url}/platform/i86pc/amd64/boot_archive
 boot
-exit 0
+exit
 
 :openindiana_exit
 clear menu
