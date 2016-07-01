@@ -14,13 +14,10 @@ iseq ${ver} dev151a && set src http://dlc.openindiana.org/isos/151a/oi-dev-151a-
 
 :boot_openindiana
 imgfree
-kernel ${base_url}/platform/i86pc/kernel/amd64/unix -v -B console=text
+kernel ${base_url}/platform/i86pc/kernel/amd64/unix -v -B console=text,install_media=${base_url},install_boot=${base_url}/boot
 module ${base_url}/platform/i86pc/amd64/boot_archive
-boot || goto openindiana_fail
+boot
 
 :openindiana_exit
 clear menu
 exit 0
-
-:openindiana_fail
-echo Booting failed, dropping to shell
