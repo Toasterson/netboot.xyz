@@ -1,8 +1,5 @@
 #!ipxe
 
-# FreeBSD Operating System
-# http://www.freebsd.org
-
 :smartos_menu
 goto boot_smartos
 

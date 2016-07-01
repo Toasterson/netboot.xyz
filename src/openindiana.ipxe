@@ -1,8 +1,5 @@
 #!ipxe
 
-# OpenBSD Operating System
-# http://www.openbsd.org
-
 set hipster_version 20160421
 set base_url http://mods.unff.de/openindiana_netboot_test
 
@@ -18,9 +15,9 @@ iseq ${ver} dev151a && set src http://dlc.openindiana.org/isos/151a/oi-dev-151a-
 :boot_openindiana
 imgfree
 kernel ${base_url}/platform/i86pc/kernel/amd64/unix -B console=ttya,install_media=${base_url},install_service=oi_x86,install_svc_address=${base_url}
-initrd ${base_url}/platform/i86pc/amd64/boot_archive
+module ${base_url}/platform/i86pc/amd64/boot_archive
+imgstat
 boot
-exit
 
 :openindiana_exit
 clear menu
