@@ -12,12 +12,14 @@ choose ver || goto openindiana_exit
 iseq ${ver} hipster && set src http://dlc.openindiana.org/isos/hipster/OI-hipster-text-${hipster_version}.iso ||
 iseq ${ver} dev151a && set src http://dlc.openindiana.org/isos/151a/oi-dev-151a-text-x86.iso ||
 
+set base_url http://mods.unff.de/openindiana_netboot_test
+
 :boot_openindiana
 imgfree
-kernel http://mods.unff.de/openindiana_netboot_test/platform/i86pc/kernel/amd64/unix -v -B console=text,install_media=${base_url}
-module http://mods.unff.de/openindiana_netboot_test/platform/i86pc/amd64/boot_archive
-module http://mods.unff.de/openindiana_netboot_test/solaris.zlib
-module http://mods.unff.de/openindiana_netboot_test/solarismisc.zlib
+kernel ${base_url}/platform/i86pc/kernel/amd64/unix /platform/i86pc/kernel/amd64/unix -v -B console=text,install_media=${base_url},install_boot=${base_url}/boot
+module ${base_url}/platform/i86pc/amd64/boot_archive
+module ${base_url}/solaris.zlib
+module ${base_url}/solarismisc.zlib
 boot
 
 :openindiana_exit
