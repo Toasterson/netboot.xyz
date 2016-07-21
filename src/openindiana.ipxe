@@ -18,8 +18,6 @@ set base_url http://mods.unff.de/openindiana_netboot_test
 imgfree
 kernel ${base_url}/platform/i86pc/kernel/amd64/unix /platform/i86pc/kernel/amd64/unix -v -B console=text,install_media=${base_url},install_boot=${base_url}/boot
 module ${base_url}/platform/i86pc/amd64/boot_archive
-module ${base_url}/solaris.zlib
-module ${base_url}/solarismisc.zlib
 boot
 
 :openindiana_exit
