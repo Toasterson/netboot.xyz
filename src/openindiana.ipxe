@@ -14,7 +14,7 @@ iseq ${ver} dev151a && set src http://dlc.openindiana.org/isos/151a/oi-dev-151a-
 
 :boot_openindiana
 imgfree
-kernel ${base_url}/platform/i86pc/kernel/amd64/unix -B install=true,console=text,install_media=${base_url}
+kernel ${base_url}/platform/i86pc/kernel/amd64/unix -v -B install=true,console=text,install_media=${base_url}
 module ${base_url}/platform/i86pc/amd64/boot_archive
 boot
 
