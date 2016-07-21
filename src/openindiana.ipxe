@@ -12,11 +12,9 @@ choose ver || goto openindiana_exit
 iseq ${ver} hipster && set src http://dlc.openindiana.org/isos/hipster/OI-hipster-text-${hipster_version}.iso ||
 iseq ${ver} dev151a && set src http://dlc.openindiana.org/isos/151a/oi-dev-151a-text-x86.iso ||
 
-set base_url http://mods.unff.de/openindiana_netboot_test
-
 :boot_openindiana
 imgfree
-kernel ${base_url}/platform/i86pc/kernel/amd64/unix /platform/i86pc/kernel/amd64/unix -v -B console=text,install_media=${base_url},install_boot=${base_url}/boot
+kernel ${base_url}/platform/i86pc/kernel/amd64/unix -v -B console=text,install_media=mods.unff.de:/openindiana_netboot_test,install_boot=mods.unff.de:/openindiana_netboot_test/boot
 module http://mods.unff.de/boot_archive
 boot
 
